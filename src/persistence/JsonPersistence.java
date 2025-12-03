@@ -1,14 +1,9 @@
 package persistence;
 
+import com.google.gson.*;
 import model.GenreNode;
 import model.GenreTree;
 import model.Movie;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 
 import java.io.*;
 import java.lang.reflect.Type;
