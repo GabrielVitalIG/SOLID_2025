@@ -3,6 +3,7 @@ package server;
 import model.GenreTree;
 import server.commands.Command;
 import server.commands.CommandFactory;
+import utils.Logger; // Import Logger
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,12 +30,18 @@ public class ClientHandler implements Runnable {
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             out.println("Welcome to RecomTree! Type 'help' for commands.");
+            // Send the END marker for the welcome message too, just to be safe with the parser
+            out.println("<END>");
 
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
+                // Log the incoming command
+                Logger.log("Client " + clientSocket.getPort() + " sent: " + inputLine);
+
                 // Handle disconnect
                 if ("QUIT".equalsIgnoreCase(inputLine.trim())) {
                     out.println("Goodbye!");
+                    out.println("<END>");
                     break;
                 }
 
@@ -43,7 +50,6 @@ public class ClientHandler implements Runnable {
 
                 if (cmd != null) {
                     // 2. Parse arguments using the public helper
-                    // Make sure you changed parseInput to 'public' in CommandFactory!
                     List<String> tokens = CommandFactory.parseInput(inputLine);
 
                     // Skip the first token (the command name) to get just arguments
@@ -54,16 +60,20 @@ public class ClientHandler implements Runnable {
                 } else {
                     out.println("ERROR: Unknown command.");
                 }
+
+                // CRITICAL: Send the end-of-response marker so the client stops reading
+                out.println("<END>");
             }
 
         } catch (IOException e) {
-            System.err.println("Error handling client: " + e.getMessage());
+            Logger.error("Error handling client " + clientSocket.getPort() + ": " + e.getMessage());
         } finally {
             try {
                 if (clientSocket != null) clientSocket.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            Logger.log("Client " + clientSocket.getPort() + " disconnected.");
         }
     }
 
