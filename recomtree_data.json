@@ -1,0 +1,40 @@
+{
+  "name": "Root",
+  "children": [
+    {
+      "name": "Action",
+      "children": [
+        {
+          "name": "Sci-Fi",
+          "children": [
+            {
+              "ratings": [],
+              "name": "Inception",
+              "children": []
+            },
+            {
+              "ratings": [],
+              "name": "The Matrix",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Animation",
+      "children": [
+        {
+          "name": "Family",
+          "children": [
+            {
+              "ratings": [],
+              "name": "Toy Story",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
