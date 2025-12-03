@@ -13,5 +13,9 @@ public class Rating {
         return score;
     }
 
+    public String getUser() {
+        return user;
+    }
+
     // You might add getters for user if needed for the strategy pattern later
 }
