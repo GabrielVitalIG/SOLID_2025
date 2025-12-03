@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "name": "The Shawshank Redemption",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 2,
+    "name": "The Godfather",
+    "genre": ["Crime", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 3,
+    "name": "The Dark Knight",
+    "genre": ["Action", "Crime", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 4,
+    "name": "Pulp Fiction",
+    "genre": ["Crime", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 5,
+    "name": "Schindler's List",
+    "genre": ["Biography", "Drama", "History"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 6,
+    "name": "The Lord of the Rings: The Return of the King",
+    "genre": ["Adventure", "Fantasy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 7,
+    "name": "Forrest Gump",
+    "genre": ["Drama", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 8,
+    "name": "Inception",
+    "genre": ["Action", "Sci-Fi", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 9,
+    "name": "Fight Club",
+    "genre": ["Drama", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 10,
+    "name": "The Lord of the Rings: The Fellowship of the Ring",
+    "genre": ["Adventure", "Fantasy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 11,
+    "name": "The Good, the Bad and the Ugly",
+    "genre": ["Western"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 12,
+    "name": "The Matrix",
+    "genre": ["Action", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 13,
+    "name": "Seven Samurai",
+    "genre": ["Action", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 14,
+    "name": "Star Wars: Episode IV - A New Hope",
+    "genre": ["Action", "Sci-Fi", "Adventure"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 15,
+    "name": "Spirited Away",
+    "genre": ["Animation", "Adventure", "Family"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 16,
+    "name": "Casablanca",
+    "genre": ["Drama", "Romance", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 17,
+    "name": "Parasite",
+    "genre": ["Comedy", "Drama", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 18,
+    "name": "City Lights",
+    "genre": ["Comedy", "Drama", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 19,
+    "name": "Psycho",
+    "genre": ["Horror", "Mystery", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 20,
+    "name": "Alien",
+    "genre": ["Horror", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 21,
+    "name": "Jaws",
+    "genre": ["Adventure", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 22,
+    "name": "Goodfellas",
+    "genre": ["Biography", "Crime", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 23,
+    "name": "The Silence of the Lambs",
+    "genre": ["Crime", "Drama", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 24,
+    "name": "The Green Mile",
+    "genre": ["Crime", "Drama", "Fantasy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 25,
+    "name": "Saving Private Ryan",
+    "genre": ["Drama", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 26,
+    "name": "Gladiator",
+    "genre": ["Action", "Adventure", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 27,
+    "name": "The Departed",
+    "genre": ["Crime", "Drama", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 28,
+    "name": "Whiplash",
+    "genre": ["Drama", "Music"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 29,
+    "name": "The Prestige",
+    "genre": ["Drama", "Mystery", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 30,
+    "name": "Terminator 2: Judgment Day",
+    "genre": ["Action", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 31,
+    "name": "Eternal Sunshine of the Spotless Mind",
+    "genre": ["Drama", "Romance", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 32,
+    "name": "Amelie",
+    "genre": ["Comedy", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 33,
+    "name": "The Grand Budapest Hotel",
+    "genre": ["Adventure", "Comedy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 34,
+    "name": "Get Out",
+    "genre": ["Horror", "Mystery", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 35,
+    "name": "The Martian",
+    "genre": ["Adventure", "Drama", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 36,
+    "name": "Interstellar",
+    "genre": ["Adventure", "Drama", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 37,
+    "name": "Dunkirk",
+    "genre": ["Action", "Drama", "History"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 38,
+    "name": "Inglourious Basterds",
+    "genre": ["Adventure", "Drama", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 39,
+    "name": "Django Unchained",
+    "genre": ["Drama", "Western"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 40,
+    "name": "A Separation",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 41,
+    "name": "Once Upon a Time in America",
+    "genre": ["Crime", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 42,
+    "name": "The Shining",
+    "genre": ["Drama", "Horror"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 43,
+    "name": "The Thing",
+    "genre": ["Horror", "Mystery", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 44,
+    "name": "No Country for Old Men",
+    "genre": ["Crime", "Drama", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 45,
+    "name": "Blade Runner 2049",
+    "genre": ["Action", "Sci-Fi", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 46,
+    "name": "Mad Max: Fury Road",
+    "genre": ["Action", "Adventure", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 47,
+    "name": "Toy Story",
+    "genre": ["Animation", "Adventure", "Comedy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 48,
+    "name": "Finding Nemo",
+    "genre": ["Animation", "Adventure", "Family"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 49,
+    "name": "WALL-E",
+    "genre": ["Animation", "Adventure", "Family"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 50,
+    "name": "Inside Out",
+    "genre": ["Animation", "Adventure", "Comedy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 51,
+    "name": "The Lion King (1994)",
+    "genre": ["Animation", "Adventure", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 52,
+    "name": "The Princess Bride",
+    "genre": ["Adventure", "Comedy", "Fantasy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 53,
+    "name": "Pan's Labyrinth",
+    "genre": ["Drama", "Fantasy", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 54,
+    "name": "Back to the Future",
+    "genre": ["Adventure", "Comedy", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 55,
+    "name": "Raiders of the Lost Ark",
+    "genre": ["Action", "Adventure"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 56,
+    "name": "V for Vendetta",
+    "genre": ["Action", "Drama", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 57,
+    "name": "Donnie Darko",
+    "genre": ["Drama", "Sci-Fi", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 58,
+    "name": "E.T. the Extra-Terrestrial",
+    "genre": ["Family", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 59,
+    "name": "Stand by Me",
+    "genre": ["Adventure", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 60,
+    "name": "One Flew Over the Cuckoo's Nest",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 61,
+    "name": "Dr. Strangelove",
+    "genre": ["Comedy", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 62,
+    "name": "The Apartment",
+    "genre": ["Comedy", "Drama", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 63,
+    "name": "Vertigo",
+    "genre": ["Mystery", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 64,
+    "name": "Rear Window",
+    "genre": ["Mystery", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 65,
+    "name": "12 Angry Men",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 66,
+    "name": "Citizen Kane",
+    "genre": ["Drama", "Mystery"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 67,
+    "name": "Modern Times",
+    "genre": ["Comedy", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 68,
+    "name": "Singin' in the Rain",
+    "genre": ["Comedy", "Musical", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 69,
+    "name": "It's a Wonderful Life",
+    "genre": ["Drama", "Family", "Fantasy"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 70,
+    "name": "Requiem for a Dream",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 71,
+    "name": "American History X",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 72,
+    "name": "Snatch",
+    "genre": ["Comedy", "Crime"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 73,
+    "name": "Trainspotting",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 74,
+    "name": "The Big Lebowski",
+    "genre": ["Comedy", "Crime"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 75,
+    "name": "Kill Bill: Vol. 1",
+    "genre": ["Action", "Crime", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 76,
+    "name": "The Royal Tenenbaums",
+    "genre": ["Comedy", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 77,
+    "name": "There Will Be Blood",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 78,
+    "name": "Mad Max 2: The Road Warrior",
+    "genre": ["Action", "Sci-Fi", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 79,
+    "name": "Die Hard",
+    "genre": ["Action", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 80,
+    "name": "A Clockwork Orange",
+    "genre": ["Crime", "Drama", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 81,
+    "name": "2001: A Space Odyssey",
+    "genre": ["Adventure", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 82,
+    "name": "The Exorcist",
+    "genre": ["Horror"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 83,
+    "name": "Rosemary's Baby",
+    "genre": ["Drama", "Horror"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 84,
+    "name": "The Texas Chain Saw Massacre",
+    "genre": ["Horror"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 85,
+    "name": "The Bridge on the River Kwai",
+    "genre": ["Adventure", "Drama", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 86,
+    "name": "Apocalypse Now",
+    "genre": ["Drama", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 87,
+    "name": "Lawrence of Arabia",
+    "genre": ["Adventure", "Biography", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 88,
+    "name": "The Treasure of the Sierra Madre",
+    "genre": ["Adventure", "Drama", "Western"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 89,
+    "name": "Sunset Boulevard",
+    "genre": ["Drama", "Film-Noir"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 90,
+    "name": "All About Eve",
+    "genre": ["Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 91,
+    "name": "Some Like It Hot",
+    "genre": ["Comedy", "Musical", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 92,
+    "name": "The Great Dictator",
+    "genre": ["Comedy", "War"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 93,
+    "name": "The Kid",
+    "genre": ["Comedy", "Drama", "Family"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 94,
+    "name": "Before Sunrise",
+    "genre": ["Drama", "Romance"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 95,
+    "name": "Her",
+    "genre": ["Drama", "Romance", "Sci-Fi"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 96,
+    "name": "The Social Network",
+    "genre": ["Biography", "Drama"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 97,
+    "name": "La La Land",
+    "genre": ["Comedy", "Drama", "Musical"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 98,
+    "name": "Prisoners",
+    "genre": ["Crime", "Drama", "Thriller"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 99,
+    "name": "Knives Out",
+    "genre": ["Comedy", "Crime", "Mystery"],
+    "ratings": [],
+    "average-rating": 0.0
+  },
+  {
+    "id": 100,
+    "name": "Paddington 2",
+    "genre": ["Animation", "Adventure", "Family"],
+    "ratings": [],
+    "average-rating": 0.0
+  }
+]
