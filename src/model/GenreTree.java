@@ -66,4 +66,9 @@ public class GenreTree {
         }
         return null;
     }
+
+    // Add this to model/GenreTree.java
+    public void setRoot(GenreNode root) {
+        this.root = root;
+    }
 }
