@@ -28,16 +28,16 @@ public class CommandFactory {
                 return new AddMovieCommand();
 
             case "LIST_SUBTREE":
-                // TODO: You will create this class next
                 return new ListSubtreeCommand();
 
             case "RECOMMEND":
-                // TODO: You will create this class later
-                return null; // Placeholder
+                return null;
 
-            // inside the switch(keyword) block:
             case "RATE_MOVIE":
                 return new RateMovieCommand();
+
+            case "HELP":
+                return new HelpCommand();
 
             default:
                 return null; // Command not found

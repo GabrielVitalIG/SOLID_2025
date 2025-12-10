@@ -1,7 +1,7 @@
 package client.ui;
 
 import client.Client;
-import client.ClientCommandParser; // <--- IMPORT THIS
+import client.ClientCommandParser;
 
 import java.io.IOException;
 import java.util.Scanner;
