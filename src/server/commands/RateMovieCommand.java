@@ -3,6 +3,7 @@ package server.commands;
 import model.GenreTree;
 import model.Movie;
 import server.ClientHandler;
+import server.Server;
 
 public class RateMovieCommand implements Command {
 
@@ -31,10 +32,14 @@ public class RateMovieCommand implements Command {
             if (movie == null) {
                 client.sendMessage("ERROR: Movie '" + title + "' not found.");
             } else {
-                movie.addRating(rating);
-                // Calculate new average for feedback
+                //Explicitly pass "User1" so the Recommendation Strategy finds it later!
+                movie.addRating("User1", rating);
+
                 String newAvg = String.format("%.1f", movie.getAverageRating());
                 client.sendMessage("SUCCESS: Rated '" + title + "' - New Average: " + newAvg);
+
+                // Save changes immediately
+                Server.saveData();
             }
 
         } catch (NumberFormatException e) {
