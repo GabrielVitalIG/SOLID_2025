@@ -62,8 +62,64 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        // Entry point: Connects to localhost on port 5555
-        Client client = new Client("127.0.0.1", 5555);
-        client.start();
+        // Default mode: Interactive
+        if (args.length == 0) {
+            Client client = new Client("127.0.0.1", 5555);
+            client.start();
+        }
+        // Batch Mode)
+        else {
+            String scriptFile = args[0];
+            runBatchMode(scriptFile);
+        }
+    }
+
+    private static void runBatchMode(String filename) {
+        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(filename))) {
+            Client client = new Client("127.0.0.1", 5555);
+            // Connect manually without UI
+            System.out.println("Batch Mode: Running " + filename);
+
+            // Initialize network
+            // Note: You might need to expose the socket logic from start() or just duplicate the simple connection part here
+            // Ideally, refactor 'start()' to accept an Input Source, but here is the quick way:
+
+            java.net.Socket socket = new java.net.Socket("127.0.0.1", 5555);
+            java.io.PrintWriter out = new java.io.PrintWriter(socket.getOutputStream(), true);
+            java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(socket.getInputStream()));
+
+            // Read welcome message first
+            readResponseLoop(in);
+
+            String command;
+            while ((command = reader.readLine()) != null) {
+                if (command.trim().isEmpty()) continue;
+
+                System.out.println(">> Executing: " + command);
+                out.println(command);
+
+                // Wait for server response
+                readResponseLoop(in);
+
+                if ("QUIT".equalsIgnoreCase(command.trim())) break;
+
+                // Small delay to prevent flooding if necessary
+                Thread.sleep(100);
+            }
+            socket.close();
+            System.out.println("Batch execution finished.");
+
+        } catch (Exception e) {
+            System.err.println("Batch Error: " + e.getMessage());
+        }
+    }
+
+    // Helper for batch mode to read until <END>
+    private static void readResponseLoop(java.io.BufferedReader in) throws java.io.IOException {
+        String line;
+        while ((line = in.readLine()) != null) {
+            if ("<END>".equals(line)) break;
+            System.out.println(line);
+        }
     }
 }

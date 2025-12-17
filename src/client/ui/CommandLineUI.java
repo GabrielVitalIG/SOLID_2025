@@ -2,6 +2,7 @@ package client.ui;
 
 import client.Client;
 import client.ClientCommandParser;
+import client.ResultExporter;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,6 +10,9 @@ import java.util.Scanner;
 public class CommandLineUI {
     private Client client;
     private Scanner scanner;
+
+    // Store the last server response for exporting
+    private String lastResponse = "";
 
     public CommandLineUI(Client client) {
         this.client = client;
@@ -28,8 +32,29 @@ public class CommandLineUI {
 
                 if (input.trim().isEmpty()) continue;
 
+                // --- NEW: INTERCEPT EXPORT COMMAND ---
+                // Syntax: EXPORT csv mydata.csv OR EXPORT json mydata.json
+                if (input.toUpperCase().startsWith("EXPORT ")) {
+                    String[] parts = input.trim().split(" ");
+                    if (parts.length < 3) {
+                        System.out.println("Usage: EXPORT <csv|json> <filename>");
+                        continue;
+                    }
+                    String format = parts[1];
+                    String filename = parts[2];
+
+                    if ("csv".equalsIgnoreCase(format)) {
+                        ResultExporter.exportToCsv(lastResponse, filename);
+                    } else if ("json".equalsIgnoreCase(format)) {
+                        ResultExporter.exportToJson(lastResponse, filename);
+                    } else {
+                        System.out.println("Unknown format. Use csv or json.");
+                    }
+                    continue; // Don't send "EXPORT" to the server!
+                }
+                // -------------------------------------
+
                 // >>> VALIDATION STEP <<<
-                // Use the class name directly (thanks to the import above)
                 if (!ClientCommandParser.validate(input)) {
                     continue; // Loop back if invalid
                 }
@@ -45,6 +70,10 @@ public class CommandLineUI {
 
                 // Read and display response
                 String response = client.receiveResponse();
+
+                // Save the response so we can export it later if the user wants
+                lastResponse = response;
+
                 System.out.println(response);
             }
 
