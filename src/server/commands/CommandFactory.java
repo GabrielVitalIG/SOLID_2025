@@ -39,6 +39,9 @@ public class CommandFactory {
             case "HELP":
                 return new HelpCommand();
 
+            case "LOGIN":
+                return new LoginCommand();
+
             default:
                 return null; // Command not found
         }

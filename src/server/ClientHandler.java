@@ -3,7 +3,7 @@ package server;
 import model.GenreTree;
 import server.commands.Command;
 import server.commands.CommandFactory;
-import utils.Logger; // Import Logger
+import utils.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,10 +18,23 @@ public class ClientHandler implements Runnable {
     private PrintWriter out;
     private BufferedReader in;
 
+    // --- NEW AUTHENTICATION FIELDS ---
+    private String currentUserId = "Guest"; // Default user
+    private boolean isAdmin = false;        // Default permission
+    // ---------------------------------
+
     public ClientHandler(Socket socket, GenreTree tree) {
         this.clientSocket = socket;
         this.genreTree = tree;
     }
+
+    // --- GETTERS & SETTERS FOR COMMANDS ---
+    public String getCurrentUserId() { return currentUserId; }
+    public void setCurrentUserId(String userId) { this.currentUserId = userId; }
+
+    public boolean isAdmin() { return isAdmin; }
+    public void setAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
+    // --------------------------------------
 
     @Override
     public void run() {
@@ -29,39 +42,32 @@ public class ClientHandler implements Runnable {
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            out.println("Welcome to RecomTree! Type 'help' for commands.");
-            // Send the END marker for the welcome message too, just to be safe with the parser
+            // Updated Welcome Message
+            out.println("Welcome to RecomTree! Login to track ratings.");
+            out.println("Type 'LOGIN <username>' or 'LOGIN admin <password>'");
             out.println("<END>");
 
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                // Log the incoming command
-                Logger.log("Client " + clientSocket.getPort() + " sent: " + inputLine);
+                Logger.log("[" + currentUserId + "] sent: " + inputLine);
 
-                // Handle disconnect
                 if ("QUIT".equalsIgnoreCase(inputLine.trim())) {
-                    out.println("Goodbye!");
+                    out.println("Goodbye, " + currentUserId + "!");
                     out.println("<END>");
                     break;
                 }
 
-                // 1. Identify the command
                 Command cmd = CommandFactory.getCommand(inputLine);
 
                 if (cmd != null) {
-                    // 2. Parse arguments using the public helper
                     List<String> tokens = CommandFactory.parseInput(inputLine);
-
-                    // Skip the first token (the command name) to get just arguments
                     String[] args = tokens.subList(1, tokens.size()).toArray(new String[0]);
 
-                    // 3. Execute
                     cmd.execute(args, genreTree, this);
                 } else {
                     out.println("ERROR: Unknown command.");
                 }
 
-                // CRITICAL: Send the end-of-response marker so the client stops reading
                 out.println("<END>");
             }
 
@@ -70,9 +76,7 @@ public class ClientHandler implements Runnable {
         } finally {
             try {
                 if (clientSocket != null) clientSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            } catch (IOException e) { e.printStackTrace(); }
             Logger.log("Client " + clientSocket.getPort() + " disconnected.");
         }
     }

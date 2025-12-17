@@ -58,6 +58,7 @@ public class ClientCommandParser {
 
             case "HELP":
             case "QUIT":
+            case "LOGIN":
                 return true;
 
             default:

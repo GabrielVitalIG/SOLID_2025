@@ -1,7 +1,6 @@
 package client;
 
 import client.ui.CommandLineUI;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,14 +23,10 @@ public class Client {
         try {
             System.out.println("Connecting to server at " + host + ":" + port + "...");
             socket = new Socket(host, port);
-
-            // Initialize streams
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             System.out.println("Connected!");
-
-            // Start the UI loop
             CommandLineUI ui = new CommandLineUI(this);
             ui.run();
 
@@ -42,22 +37,13 @@ public class Client {
         }
     }
 
-    /**
-     * Sends a request to the server.
-     */
     public void sendRequest(String request) {
         out.println(request);
     }
 
-    /**
-     * Reads the response from the server.
-     * It reads multiple lines until it sees the "<END>" marker.
-     */
     public String receiveResponse() throws IOException {
         StringBuilder response = new StringBuilder();
         String line;
-
-        // Keep reading lines until we see the magic marker or stream ends
         while ((line = in.readLine()) != null) {
             if ("<END>".equals(line)) {
                 break;
@@ -72,14 +58,12 @@ public class Client {
             if (socket != null) socket.close();
             if (in != null) in.close();
             if (out != null) out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
     public static void main(String[] args) {
-        // Entry point: Connects to localhost on port 8888
-        Client client = new Client("127.0.0.1", 8888);
+        // Entry point: Connects to localhost on port 5555
+        Client client = new Client("127.0.0.1", 5555);
         client.start();
     }
 }
