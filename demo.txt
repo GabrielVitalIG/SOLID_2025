@@ -1,0 +1,7 @@
+LOGIN admin admin123
+ADD_MOVIE "Scream1" "Horror" "Crime" "Police"
+ADD_MOVIE "Chucky" "Horror" "Doll"
+ADD_MOVIE "Conjuring" "Horror" "Ghosts"
+RATE_MOVIE "Scream1" 10
+LIST_SUBTREE Action
+QUIT

@@ -11,7 +11,6 @@ import java.util.Set;
 
 public class GenreSimilarityStrategy implements RecommendationStrategy {
 
-    // Threshold to consider a movie "liked" by the user
     private static final double LIKE_THRESHOLD = 7.0;
 
     @Override
@@ -20,61 +19,66 @@ public class GenreSimilarityStrategy implements RecommendationStrategy {
         Set<Movie> seenMovies = new HashSet<>();
         List<Movie> recommendations = new ArrayList<>();
 
-        // Pass 1: Find out which genres the user likes
-        analyzeUserPreferences(tree.getRoot(), userId, "Root", likedGenres, seenMovies);
+        // Pass 1: Find ALL genres in the path of movies the user likes
+        analyzeUserPreferences(tree.getRoot(), userId, new ArrayList<>(), likedGenres, seenMovies);
 
-        // Pass 2: Find unseen movies in those genres
-        findSimilarMovies(tree.getRoot(), "Root", likedGenres, seenMovies, recommendations);
+        // Pass 2: Traverse tree. If we hit a liked genre, recommend EVERYTHING below it.
+        // We start with 'false' because the Root is never "liked" per se.
+        findSimilarMovies(tree.getRoot(), false, likedGenres, seenMovies, recommendations);
 
         return recommendations;
     }
 
-    /**
-     * Recursive helper to find genres of movies the user rated highly.
-     */
-    private void analyzeUserPreferences(GenreNode node, String userId, String currentGenre,
+    private void analyzeUserPreferences(GenreNode node, String userId, List<String> pathSoFar,
                                         Set<String> likedGenres, Set<Movie> seenMovies) {
 
         if (node instanceof Movie) {
             Movie movie = (Movie) node;
-            double userRating = movie.getUserRating(userId);
-
-            // If user rated this movie
-            if (userRating != -1) {
+            double rating = movie.getUserRating(userId);
+            if (rating != -1) {
                 seenMovies.add(movie);
-                // If they liked it, remember this genre!
-                if (userRating >= LIKE_THRESHOLD) {
-                    likedGenres.add(currentGenre);
+                if (rating >= LIKE_THRESHOLD) {
+                    // USER LIKES THIS MOVIE -> Add ALL ancestors to likedGenres
+                    likedGenres.addAll(pathSoFar);
                 }
             }
         } else {
-            // It's a GenreNode
+            // It's a Genre.
+            List<String> childPath = new ArrayList<>(pathSoFar);
+            if (!node.getName().equalsIgnoreCase("Root")) {
+                childPath.add(node.getName());
+            }
             for (GenreNode child : node.getChildren()) {
-                // Pass the current node's name down as the "Genre Name" for the child
-                analyzeUserPreferences(child, userId, node.getName(), likedGenres, seenMovies);
+                analyzeUserPreferences(child, userId, childPath, likedGenres, seenMovies);
             }
         }
     }
 
     /**
-     * Recursive helper to collect movies from the liked genres.
+     * Recursive helper to find movies.
+     * @param insideLikedBranch true if one of the ancestors was a "Liked Genre"
      */
-    private void findSimilarMovies(GenreNode node, String currentGenre,
+    private void findSimilarMovies(GenreNode node, boolean insideLikedBranch,
                                    Set<String> likedGenres, Set<Movie> seenMovies,
                                    List<Movie> accumulator) {
+
+        // 1. Check if THIS node is a Liked Genre
+        // If we are already in a liked branch, we stay true.
+        // If not, we check if this specific node's name is in our liked list.
+        boolean currentlyInteresting = insideLikedBranch || likedGenres.contains(node.getName());
 
         if (node instanceof Movie) {
             Movie movie = (Movie) node;
             // Recommend if:
-            // 1. We haven't seen it
-            // 2. It belongs to a genre we like
-            if (!seenMovies.contains(movie) && likedGenres.contains(currentGenre)) {
+            // 1. It's in an interesting branch (or direct parent is liked)
+            // 2. We haven't seen it yet
+            if (currentlyInteresting && !seenMovies.contains(movie)) {
                 accumulator.add(movie);
             }
         } else {
-            // It's a GenreNode
+            // It's a Genre -> Keep digging
             for (GenreNode child : node.getChildren()) {
-                findSimilarMovies(child, node.getName(), likedGenres, seenMovies, accumulator);
+                findSimilarMovies(child, currentlyInteresting, likedGenres, seenMovies, accumulator);
             }
         }
     }

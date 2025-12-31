@@ -3,7 +3,7 @@ package server.commands;
 import model.GenreTree;
 import model.Movie;
 import server.ClientHandler;
-import strategy.GenreSimilarityStrategy; // Import the new strategy
+import strategy.GenreSimilarityStrategy;
 import strategy.RecommendationStrategy;
 import strategy.TopRatedStrategy;
 
@@ -16,27 +16,22 @@ public class RecommendCommand implements Command {
         RecommendationStrategy strategy;
         String headerMessage;
 
-        // 1. Select the strategy based on user input
-        // Check if the first argument exists and is "SIMILAR"
         if (args.length > 0 && "SIMILAR".equalsIgnoreCase(args[0])) {
             strategy = new GenreSimilarityStrategy();
             headerMessage = "--- Recommended Based on Your Favorites ---";
         } else {
-            // Default behavior if no argument or unknown argument is provided
             strategy = new TopRatedStrategy();
             headerMessage = "--- Top Recommended Movies ---";
         }
 
-        // 2. Execute the strategy
-        // We pass "User1" as a dummy ID. In a full system, this would come from the client's login session.
-        String currentUserId = "User1";
+        // UPDATE: Get actual ID
+        String currentUserId = client.getCurrentUserId();
         List<Movie> recommendations = strategy.recommend(tree, currentUserId);
 
-        // 3. Send results to client
         if (recommendations.isEmpty()) {
             client.sendMessage("No movies found to recommend.");
             if (strategy instanceof GenreSimilarityStrategy) {
-                client.sendMessage("(Hint: Try rating some movies with high scores first!)");
+                client.sendMessage("(Hint: " + currentUserId + ", try rating some movies with high scores first!)");
             }
         } else {
             client.sendMessage(headerMessage);

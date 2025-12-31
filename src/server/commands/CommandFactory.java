@@ -28,16 +28,19 @@ public class CommandFactory {
                 return new AddMovieCommand();
 
             case "LIST_SUBTREE":
-                // TODO: You will create this class next
                 return new ListSubtreeCommand();
 
             case "RECOMMEND":
-                // TODO: You will create this class later
-                return null; // Placeholder
+                return new RecommendCommand();
 
-            // inside the switch(keyword) block:
             case "RATE_MOVIE":
                 return new RateMovieCommand();
+
+            case "HELP":
+                return new HelpCommand();
+
+            case "LOGIN":
+                return new LoginCommand();
 
             default:
                 return null; // Command not found
@@ -48,11 +51,15 @@ public class CommandFactory {
      * Helper to split string by spaces but keep quoted text together.
      * Example: 'ADD_MOVIE "Star Wars" Sci-Fi' -> ["ADD_MOVIE", "Star Wars", "Sci-Fi"]
      */
-    public static List<String> parseInput(String input) {  // <--- WAS PRIVATE, NOW PUBLIC
+    public static List<String> parseInput(String input) {
         List<String> list = new ArrayList<>();
         Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(input);
         while (m.find()) {
-            list.add(m.group(1).replace("\"", ""));
+            // CLEANUP: Replace quotes AND trim whitespace
+            String cleanPart = m.group(1).replace("\"", "").trim();
+            if (!cleanPart.isEmpty()) {
+                list.add(cleanPart);
+            }
         }
         return list;
     }
