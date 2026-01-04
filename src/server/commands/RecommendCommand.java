@@ -24,7 +24,6 @@ public class RecommendCommand implements Command {
             headerMessage = "--- Top Recommended Movies ---";
         }
 
-        // UPDATE: Get actual ID
         String currentUserId = client.getCurrentUserId();
         List<Movie> recommendations = strategy.recommend(tree, currentUserId);
 

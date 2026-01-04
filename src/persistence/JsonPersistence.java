@@ -35,7 +35,7 @@ public class JsonPersistence implements TreePersistence {
     public GenreTree load() throws IOException {
         File file = new File(filePath);
         if (!file.exists()) {
-            return null; // File doesn't exist yet
+            return null;
         }
 
         try (Reader reader = new FileReader(filePath)) {
@@ -44,8 +44,6 @@ public class JsonPersistence implements TreePersistence {
 
             // Reconstruct the tree wrapper
             GenreTree tree = new GenreTree();
-            // We need a way to set the root in GenreTree.
-            // Note: You might need to add 'setRoot(GenreNode root)' to GenreTree.java
             tree.setRoot(root);
             return tree;
         }
@@ -68,9 +66,6 @@ public class JsonPersistence implements TreePersistence {
                 // Deserialize as Movie
                 return context.deserialize(json, Movie.class);
             } else {
-                // Otherwise, it's a standard GenreNode
-                // We must manually deserialize to avoid infinite recursion if we just called context.deserialize(json, GenreNode.class)
-
                 String name = jsonObject.get("name").getAsString();
                 GenreNode node = new GenreNode(name);
 
