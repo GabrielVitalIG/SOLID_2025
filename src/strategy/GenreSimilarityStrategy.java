@@ -19,11 +19,10 @@ public class GenreSimilarityStrategy implements RecommendationStrategy {
         Set<Movie> seenMovies = new HashSet<>();
         List<Movie> recommendations = new ArrayList<>();
 
-        // Pass 1: Find ALL genres in the path of movies the user likes
+        // Find ALL genres in the path of movies the user likes
         analyzeUserPreferences(tree.getRoot(), userId, new ArrayList<>(), likedGenres, seenMovies);
 
-        // Pass 2: Traverse tree. If we hit a liked genre, recommend EVERYTHING below it.
-        // We start with 'false' because the Root is never "liked" per se.
+        // Traverse tree. If we hit a liked genre, recommend EVERYTHING below it.
         findSimilarMovies(tree.getRoot(), false, likedGenres, seenMovies, recommendations);
 
         return recommendations;
@@ -76,7 +75,6 @@ public class GenreSimilarityStrategy implements RecommendationStrategy {
                 accumulator.add(movie);
             }
         } else {
-            // It's a Genre -> Keep digging
             for (GenreNode child : node.getChildren()) {
                 findSimilarMovies(child, currentlyInteresting, likedGenres, seenMovies, accumulator);
             }

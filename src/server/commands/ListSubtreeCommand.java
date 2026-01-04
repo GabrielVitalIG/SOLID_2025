@@ -9,7 +9,7 @@ public class ListSubtreeCommand implements Command {
 
     @Override
     public void execute(String[] args, GenreTree tree, ClientHandler client) {
-        // 1. Determine where to start listing (Root by default, or specific path)
+        // Determine where to start listing (Root by default, or specific path)
         GenreNode current = tree.getRoot();
 
         // Navigate down the path provided in args (e.g. "Action" "Sci-Fi")
@@ -21,12 +21,12 @@ public class ListSubtreeCommand implements Command {
             }
         }
 
-        // 2. Build the string representation recursively
+        // Build the string representation recursively
         StringBuilder sb = new StringBuilder();
         sb.append("Listing contents for: ").append(current.getName()).append("\n");
         buildSubtreeString(current, 0, sb);
 
-        // 3. Send the final string to the client
+        //Send the final string to the client
         client.sendMessage(sb.toString());
     }
 
@@ -48,7 +48,6 @@ public class ListSubtreeCommand implements Command {
         } else {
             // It's a Genre
             // Only print the name if it's NOT the top-level node we are listing
-            // (Optional cosmetic choice, but usually looks cleaner)
             if (indentLevel > 0) {
                 sb.append(indent).append("[").append(node.getName()).append("]\n");
             }

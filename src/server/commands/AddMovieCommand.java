@@ -9,13 +9,10 @@ public class AddMovieCommand implements Command {
 
     @Override
     public void execute(String[] args, GenreTree tree, ClientHandler client) {
-        // --- SECURITY CHECK ---
         if (!client.isAdmin()) {
             client.sendMessage("ERROR: Permission Denied. Only Admins can add movies.");
             return;
         }
-        // ----------------------
-
         if (args.length < 2) {
             client.sendMessage("ERROR: Usage: ADD_MOVIE <Title> <Genre1> [Genre2] ...");
             return;

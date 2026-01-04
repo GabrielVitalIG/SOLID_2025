@@ -15,10 +15,10 @@ public class Logger {
         String timestamp = LocalDateTime.now().format(formatter);
         String logEntry = String.format("[%s] %s", timestamp, message);
 
-        // 1. Print to Console (so you can see it running)
+        // Print to Console (so you can see it running)
         System.out.println(logEntry);
 
-        // 2. Append to File (so you have a history)
+        // Append to File (so you have a history)
         try (PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, true))) {
             out.println(logEntry);
         } catch (IOException e) {

@@ -13,7 +13,7 @@ public class CommandLineUI {
     private Client client;
     private Scanner scanner;
 
-    // Store the last server response for exporting
+    // Variable for export purposes
     private String lastResponse = "";
 
     public CommandLineUI(Client client) {
@@ -23,18 +23,17 @@ public class CommandLineUI {
 
     public void run() {
         try {
-            // 1. Read the initial "Welcome" message from the server
+            //Read the initial "Welcome" message from the server
             String welcome = client.receiveResponse();
             System.out.println(welcome);
 
-            // 2. Main Input Loop
+            //Main Input Loop
             while (true) {
                 System.out.print("> ");
                 String input = scanner.nextLine();
 
                 if (input.trim().isEmpty()) continue;
 
-                // --- NEW: INTERCEPT EXPORT COMMAND ---
                 if (input.toUpperCase().startsWith("EXPORT ")) {
                     String[] parts = input.trim().split(" ");
                     if (parts.length < 3) {
@@ -53,11 +52,9 @@ public class CommandLineUI {
                     } else {
                         System.out.println("Unknown format. Use csv or json.");
                     }
-                    continue; // Don't send "EXPORT" to the server!
+                    continue;
                 }
-                // -------------------------------------
-
-                // >>> VALIDATION STEP <<<
+                // Validate command
                 if (!ClientCommandParser.validate(input)) {
                     continue; // Loop back if invalid
                 }

@@ -18,17 +18,14 @@ public class ClientHandler implements Runnable {
     private PrintWriter out;
     private BufferedReader in;
 
-    // --- NEW AUTHENTICATION FIELDS ---
-    private String currentUserId = "Guest"; // Default user
-    private boolean isAdmin = false;        // Default permission
-    // ---------------------------------
+    private String currentUserId = "Guest";
+    private boolean isAdmin = false;
 
     public ClientHandler(Socket socket, GenreTree tree) {
         this.clientSocket = socket;
         this.genreTree = tree;
     }
 
-    // --- GETTERS & SETTERS FOR COMMANDS ---
     public String getCurrentUserId() { return currentUserId; }
     public void setCurrentUserId(String userId) { this.currentUserId = userId; }
 

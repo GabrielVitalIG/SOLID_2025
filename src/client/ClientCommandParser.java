@@ -17,13 +17,11 @@ public class ClientCommandParser {
         }
 
         // Split by space to get the command keyword
-        // (This is a simple split; dealing with quotes properly happens on the server)
         String[] parts = input.trim().split("\\s+");
         String command = parts[0].toUpperCase();
 
         switch (command) {
             case "ADD_MOVIE":
-                // Needs at least: ADD_MOVIE <Title> <Genre>
                 if (parts.length < 3) {
                     System.out.println("Local Error: ADD_MOVIE requires a Title and at least one Genre.");
                     return false;
@@ -31,7 +29,6 @@ public class ClientCommandParser {
                 return true;
 
             case "LIST_SUBTREE":
-                // Needs at least: LIST_SUBTREE <Genre/Root>
                 if (parts.length < 2) {
                     System.out.println("Local Error: LIST_SUBTREE requires a Genre name or 'Root'.");
                     return false;
@@ -39,12 +36,11 @@ public class ClientCommandParser {
                 return true;
 
             case "RATE_MOVIE":
-                // Needs: RATE_MOVIE <Title> <Score>
                 if (parts.length < 3) {
                     System.out.println("Local Error: RATE_MOVIE requires a Title and a Rating (0-10).");
                     return false;
                 }
-                // Optional: Check if the last part is a number
+
                 try {
                     Double.parseDouble(parts[parts.length - 1]);
                 } catch (NumberFormatException e) {
@@ -54,7 +50,7 @@ public class ClientCommandParser {
                 return true;
 
             case "RECOMMEND":
-                return true; // No args needed
+                return true;
 
             case "HELP":
             case "QUIT":

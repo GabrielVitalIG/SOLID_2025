@@ -12,7 +12,7 @@ public class CommandFactory {
             return null;
         }
 
-        // 1. Parse the input string into a list of arguments (respecting quotes)
+        //Parse the input string into a list of arguments (respecting quotes)
         List<String> tokens = parseInput(inputLine);
         if (tokens.isEmpty()) return null;
 
@@ -22,7 +22,7 @@ public class CommandFactory {
         // Remove the keyword from the args list to pass only parameters to the command
         String[] args = tokens.subList(1, tokens.size()).toArray(new String[0]);
 
-        // 2. Return the correct Command object based on the keyword
+        //Return the correct Command object based on the keyword
         switch (keyword) {
             case "ADD_MOVIE":
                 return new AddMovieCommand();
@@ -43,7 +43,7 @@ public class CommandFactory {
                 return new LoginCommand();
 
             default:
-                return null; // Command not found
+                return null;
         }
     }
 
@@ -55,7 +55,6 @@ public class CommandFactory {
         List<String> list = new ArrayList<>();
         Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(input);
         while (m.find()) {
-            // CLEANUP: Replace quotes AND trim whitespace
             String cleanPart = m.group(1).replace("\"", "").trim();
             if (!cleanPart.isEmpty()) {
                 list.add(cleanPart);

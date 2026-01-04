@@ -15,11 +15,11 @@ public class TopRatedStrategy implements RecommendationStrategy {
 
     @Override
     public List<Movie> recommend(GenreTree tree, String userId) {
-        // 1. Collect ALL movies from the tree
+        // Collect ALL movies from the tree
         List<Movie> allMovies = new ArrayList<>();
         collectMoviesRecursive(tree.getRoot(), allMovies);
 
-        // 2. Sort them by average rating (Highest to Lowest)
+        // Sort them by average rating
         Collections.sort(allMovies, new Comparator<Movie>() {
             @Override
             public int compare(Movie m1, Movie m2) {
@@ -28,7 +28,7 @@ public class TopRatedStrategy implements RecommendationStrategy {
             }
         });
 
-        // 3. Return the top N movies
+        // Return the top N movies
         if (allMovies.size() > LIMIT) {
             return allMovies.subList(0, LIMIT);
         }

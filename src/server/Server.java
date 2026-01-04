@@ -9,7 +9,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    // FIX: Changed port to 5555 to avoid "Address already in use"
     private static final int PORT = 5555;
 
     private static final String DB_FILE = "recomtree_data.json";

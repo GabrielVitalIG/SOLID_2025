@@ -81,9 +81,6 @@ public class Client {
             System.out.println("Batch Mode: Running " + filename);
 
             // Initialize network
-            // Note: You might need to expose the socket logic from start() or just duplicate the simple connection part here
-            // Ideally, refactor 'start()' to accept an Input Source, but here is the quick way:
-
             java.net.Socket socket = new java.net.Socket("127.0.0.1", 5555);
             java.io.PrintWriter out = new java.io.PrintWriter(socket.getOutputStream(), true);
             java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(socket.getInputStream()));

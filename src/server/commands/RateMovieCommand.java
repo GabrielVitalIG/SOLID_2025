@@ -28,7 +28,6 @@ public class RateMovieCommand implements Command {
             if (movie == null) {
                 client.sendMessage("ERROR: Movie '" + title + "' not found.");
             } else {
-                // UPDATE: Use the actual logged-in user ID
                 String currentUser = client.getCurrentUserId();
                 movie.addRating(currentUser, rating);
 
