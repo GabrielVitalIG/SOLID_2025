@@ -3,6 +3,8 @@ package client.ui;
 import client.Client;
 import client.ClientCommandParser;
 import client.ResultExporter;
+import client.Export.CsvExportStrategy;
+import client.Export.JsonExportStrategy;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -33,7 +35,6 @@ public class CommandLineUI {
                 if (input.trim().isEmpty()) continue;
 
                 // --- NEW: INTERCEPT EXPORT COMMAND ---
-                // Syntax: EXPORT csv mydata.csv OR EXPORT json mydata.json
                 if (input.toUpperCase().startsWith("EXPORT ")) {
                     String[] parts = input.trim().split(" ");
                     if (parts.length < 3) {
@@ -44,9 +45,11 @@ public class CommandLineUI {
                     String filename = parts[2];
 
                     if ("csv".equalsIgnoreCase(format)) {
-                        ResultExporter.exportToCsv(lastResponse, filename);
+                        ResultExporter exporter = new ResultExporter(new CsvExportStrategy());
+                        exporter.exportData(lastResponse, filename);
                     } else if ("json".equalsIgnoreCase(format)) {
-                        ResultExporter.exportToJson(lastResponse, filename);
+                        ResultExporter exporter = new ResultExporter(new JsonExportStrategy());
+                        exporter.exportData(lastResponse, filename);
                     } else {
                         System.out.println("Unknown format. Use csv or json.");
                     }
